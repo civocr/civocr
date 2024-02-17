@@ -18,6 +18,18 @@ const authModule = new AuthenticationModule(Model);
 
 - `Model`: A Mongoose model that represents the collection you wish to perform authentication operations on. This model must have an `email` field and a `password` field for the `login` and `register` methods to function correctly.
 
+## Model Plugin
+
+The passwordHashingPlugin offered by the pxf-user-module establishes a standardized approach for securely storing and validating passwords across various models and projects. By leveraging the bcrypt algorithm, this plugin ensures that passwords are safely hashed prior to their storage in a MongoDB database through Mongoose. 
+
+It streamlines the process of password management by automatically handling the complexity of hashing operations and offering a straightforward method for comparing submitted passwords against stored hashes. This consistency in password handling enhances security practices and simplifies authentication workflows across different application contexts.
+
+```javascript
+var { passwordHashingPlugin } = require('pxf-user-module').plugins
+
+// Apply the password hashing plugin with a custom salt work factor.
+schema.plugin(passwordHashingPlugin, { saltWorkFactor: 10 });
+```
 ## Methods
 
 ### login(email, password)
