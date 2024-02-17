@@ -1,3 +1,4 @@
 module.exports = {
-    AuthenticationModule: require('./lib/auth')
+    AuthenticationModule: require('./lib/auth'),
+    plugins: require('./lib/plugins')
 }
